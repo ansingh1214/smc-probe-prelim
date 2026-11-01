@@ -60,7 +60,7 @@ $$
 - **Evaluation:** the AUROC is leave-one-family-out, shown below for
   each layer, with error bars reporting ±1 SD across the 8 held-out families.
 
-<img src="results/figs/layer_sweep.png" width="650">
+<p align="center"><img src="results/figs/layer_sweep.png" width="650"></p>
 
 - **Layer and threshold:** the layer $\ell$ is selected by held-out
   AUROC, and the classifier threshold $\tau$ is chosen as the 99th
@@ -69,12 +69,16 @@ $$
 
 All numbers below are on curated held-out statements.
 
+<div align="center">
+
 | | 8B | 70B |
 |---|---|---|
 | Layer $\ell$ (LOFO AUROC) | 14 (0.928) | 32 (0.959) |
 | Held-out AUROC | 0.988 | 0.994 |
 | $\tau$ (FPR = 1%) | +3.742 | +3.057 |
 | Recall at $\tau$ | 84.6% | 91.3% |
+
+</div>
 
 ## Brute force sampling of flagged responses
 
@@ -96,7 +100,7 @@ that a response is flagged.
   145 / 200,000 (0.073%). Score distributions of all responses are given
   below ($\tau$ marked).
 
-<img src="results/figs/score_hist.png" width="650">
+<p align="center"><img src="results/figs/score_hist.png" width="650"></p>
 
 ## Twisted SMC
 
@@ -121,7 +125,7 @@ that a response is flagged.
   terminal weight) over 32 updates, along with the same quantity
   computed from the 200,000 brute-force responses (dashed).
 
-<img src="results/figs/convergence.png" width="650">
+<p align="center"><img src="results/figs/convergence.png" width="650"></p>
 
 ## Validation against brute force
 
@@ -140,11 +144,13 @@ that a response is flagged.
   against −7.23 ± 0.08 (all ± 1 SE). For both models, the bounds agree
   with brute force within two standard errors (figure below).
 
-<img src="results/figs/bounds.png" width="650">
+<p align="center"><img src="results/figs/bounds.png" width="650"></p>
 
 - **Runtime:** after a one-time training cost, SMC produces a flagged
   response 139× (8B) and 695× (70B) faster than brute force; 92× and
   326× per distinct reply (table below).
+
+<div align="center">
 
 | Runtime (2 × GH200) | 8B | 70B |
 |---|---|---|
@@ -152,6 +158,8 @@ that a response is flagged.
 | Time per flagged response, brute force | 1.2 s | 23 s |
 | Time per flagged response, SMC (effective) | 0.009 s | 0.034 s |
 | Speedup | 139× | 695× |
+
+</div>
 
 ## Judging the responses
 
@@ -195,11 +203,15 @@ Claim: {reply}
   random responses; inconclusive responses are left out of the fractions
   above (table below).
 
+<div align="center">
+
 | | 8B | 70B |
 |---|---|---|
 | Judged false, random responses | 19.4% (384 / 1,975) | 0.70% (14 / 1,994) |
 | Judged false, flagged responses (brute force) | 62.4% (315 / 505) [58.1, 66.5] | 45.4% (59 / 130) [37.1, 54.0] |
 | Judged false, SMC samples | 61.6% [57.8, 64.8] | 51.6% [45.6, 59.8] |
+
+</div>
 
 Brackets: 95% CI (Wilson score interval for brute force; percentile
 bootstrap over the 16 SMC runs).
@@ -212,6 +224,8 @@ bootstrap over the 16 SMC runs).
 
 **Flagged responses, judged false**
 
+<div align="center">
+
 | Model | Response | S |
 |---|---|---|
 | 8B | Cats have a unique ability to not meow in the Maltese Islands, specifically Malta and Gozo. | +16.9 |
@@ -221,7 +235,11 @@ bootstrap over the 16 SMC runs).
 | 70B | Germany has the most time zones in a single country, with a total of 14 time zones across its various territories and islands around the world. | +19.3 |
 | 70B | Rubber ducks were invented by Charles Goodyear in 1855, and were originally made from natural rubber. | +14.7 |
 
+</div>
+
 **Flagged responses, judged true**
+
+<div align="center">
 
 | Model | Response | S |
 |---|---|---|
@@ -229,6 +247,8 @@ bootstrap over the 16 SMC runs).
 | 8B | THERE ARE MORE PLANKTON IN THE OCEAN THAN THERE ARE STARS IN THE UNIVERSE. | +5.9 |
 | 70B | Turtles have a unique respiratory system that allows them to breathe without using their lungs all the time, instead using their butts to extract oxygen from the water through a process called cloacal respiration. | +12.7 |
 | 70B | Despite being massive objects, clouds can weigh a lot, with a single large cumulus cloud weighing as much as 1 million pounds of water. | +6.4 |
+
+</div>
 
 All judged responses: `results/8b/all_graded_replies.csv`,
 `results/70b/all_graded_replies.csv`.
