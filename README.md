@@ -87,7 +87,7 @@ All numbers below are on curated held-out statements.
   is to sample from the distribution of flagged responses:
 
 $$
-p(x \mid S > \tau) = \frac{1}{Z}\, p_0(x)\, \mathbf{1}\!\left[S(x) > \tau\right], \qquad Z = P(S > \tau)
+p(x \mid S > \tau) = \frac{1}{Z}\ p_0(x) \mathbf{1} \left[S(x) > \tau\right], \qquad Z = P(S > \tau)
 $$
 
 where $\mathbf{1}$ is the indicator function and $Z$ is the probability
